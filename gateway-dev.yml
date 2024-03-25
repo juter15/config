@@ -1,51 +1,43 @@
+---
 spring:
-    application:
-        name: gateway
-    cloud:
-        gateway:
-            routes:
-                - id: first_service
-                  uri: http://localhost:8081
-                  predicates:
-                      - Path=/first/**
-#                  filters:
-#                      - SetPath=/first/a
-                - id: second_service
-                  uri: http://localhost:8081
-                  predicates:
-                      - Path=/second/**
-#                  filters:
-#                      - SetPath=/second/
-                - id: aTob_service
-                  uri: http://localhost:8081
-                  predicates:
-                    - Path=/first/a
-                  filters:
-                      - SetPath=/second/b
-                - id: third_service
-                  uri: http://localhost:8081
-                  predicates:
-                    - Path=/third/*
-                # - id: add_service
-                #   uri: http://localhost:8081
-                #   predicates:
-                #     - Path=/add/*
+  application:
+    name: "gateway"
+  cloud:
+    gateway:
+      routes:
+      - id: "first_service"
+        uri: "http://localhost:8081"
+        predicates:
+        - "Path=/first/**"
+      - id: "second_service"
+        uri: "http://localhost:8081"
+        predicates:
+        - "Path=/second/**"
+      - id: "aTob_service"
+        uri: "http://localhost:8081"
+        predicates:
+        - "Path=/first/a"
+        filters:
+        - "SetPath=/second/b"
+      - id: "third_service"
+        uri: "http://localhost:8081"
+        predicates:
+        - "Path=/third/*"
 
 management:
-    endpoints:
-        web:
-            exposure:
-                include:
-                    - "*"
-    endpoint:
-        gateway:
-            enabled: true  # default: true
-
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
 resilience4j:
   circuitbreaker:
     configs:
       default:
-        ringBufferSizeInClosedState: 10 # 닫힌 상태에서의 호출 수로, 서킷을 열어야 할지 결정할 때 사용한다.
-        ringBufferSizeInHalfOpenState: 30 # 반열림 상태에서의 호출 수로, 서킷을 다시 열거나 닫힘 상태로 돌아갈지를 결정할 때 사용 한다.
-        failureRateThreshold: 80 # 실패한 호출에 대한 임계값(백분율)으로 이 값을 초과하면 서킷이 열린다.
-        waitDurationInOpenState: 10s # 열림 상태를 유지하는 시간, 해당 시간이후 반열림 상태로 변경된다.
+        ringBufferSizeInClosedState: 10
+        ringBufferSizeInHalfOpenState: 30
+        failureRateThreshold: 80
+        waitDurationInOpenState: "10s"
