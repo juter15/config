@@ -23,7 +23,10 @@ spring:
         uri: "http://localhost:8081"
         predicates:
         - "Path=/third/*"
-
+      - id: "1"
+        uri: "http://localhost:8081"
+        predicates:
+        - "PATH=/1/*"
 management:
   endpoint:
     gateway:
