@@ -23,10 +23,7 @@ spring:
         uri: "http://localhost:8081"
         predicates:
         - "Path=/third/*"
-      - id: "1"
-        uri: "http://localhost:8081"
-        predicates:
-        - "PATH=/1/*"
+
   bus:
     # Bus로 설정변경 새로고침 활성화
     enabled: true
