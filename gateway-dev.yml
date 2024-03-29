@@ -39,6 +39,10 @@ spring:
         uri: "http://localhost:8081"
         predicates:
         - "Path=/3/*"
+      - id: "4"
+        uri: "http://localhost:8081"
+        predicates:
+        - "Path=/4/*"
   bus:
     enabled: true
     refresh:
