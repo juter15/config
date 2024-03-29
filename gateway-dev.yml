@@ -37,7 +37,7 @@ spring:
         enabled: true
   # Spring Clud Bus Kafka 를 사용하기 위한 Kafka Broker 서버정보 입력
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: http://localhost:9092
 
 management:
   endpoint:
