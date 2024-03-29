@@ -27,6 +27,18 @@ spring:
         uri: "http://localhost:8081"
         predicates:
         - "PATH=/1/*"
+    bus:
+      # Bus로 설정변경 새로고침 활성화
+      enabled: true
+      # bus-refresh EndPoint 활성화 호출시 전체 Config Bus Client 들에게 메세지 전송
+      refresh:
+        enabled: true
+      env:
+        enabled: true
+  # Spring Clud Bus Kafka 를 사용하기 위한 Kafka Broker 서버정보 입력
+  kafka:
+    bootstrap-servers: localhost:9092
+
 management:
   endpoint:
     gateway:
