@@ -32,7 +32,10 @@ spring:
         uri: "http://localhost:8081"
         predicates:
         - "Path=/third/*"
-
+      - id: "a1"
+        uri: "http://localhost:8081"
+        predicates:
+        - "Path=/a/b/*, /a/*"
 management:
   endpoint:
     gateway:
