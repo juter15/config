@@ -2,6 +2,15 @@
 spring:
   application:
     name: "gateway"
+  bus:
+    destination: "bus"
+    enabled: true
+    refresh:
+      enabled: true
+    env:
+      enabled: true
+  kafka:
+    bootstrap-servers: "192.168.0.240:9092"
   cloud:
     gateway:
       routes:
@@ -28,15 +37,10 @@ spring:
         predicates:
         - "Path=/a/*"
         - "Path=/a/1/*"
-  bus:
-    destination: "bus"
-    enabled: true
-    refresh:
-      enabled: true
-    env:
-      enabled: true
-  kafka:
-    bootstrap-servers: "192.168.0.240:9092"
+      - id: "a1"
+        uri: "http://localhost:8081"
+        predicates:
+        - "Path=/a/*"
 management:
   endpoint:
     gateway:
