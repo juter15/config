@@ -23,23 +23,8 @@ spring:
         uri: "http://localhost:8081"
         predicates:
         - "Path=/third/*"
-      - id: "1"
-        uri: "http://localhost:8081"
-        predicates:
-        - "Path=/1/*"
-      - id: "1"
-        uri: "http://localhost:8081"
-        predicates:
-        - "Path=/1/*"
-      - id: "2"
-        uri: "http://localhost:8081"
-        predicates:
-        - "Path=/2/*"
-      - id: "1"
-        uri: "http://localhost:8081"
-        predicates:
-        - "Path=/1/*"
   bus:
+    destination: bus
     enabled: true
     refresh:
       enabled: true
